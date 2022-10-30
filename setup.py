@@ -32,11 +32,12 @@ setup(
     "allows them to make a bot that is able to retrieve Weverse Posts in "
     "semi real-time with relative ease.",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires=parse_requirements("requirements.txt"),
     python_requires=">=3.10",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
-        "License :: MIT License",
+        "License :: OSI Approved :: MIT License",
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "Programming Language :: Python :: 3.10",
