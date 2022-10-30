@@ -1,0 +1,13 @@
+.archive
+.env
+.venv/*
+.venv
+.vscode
+.vscode/*
+Lib
+Scripts
+tests
+__pycache__
+logs.log
+pyvenv.cfg
+test.py
