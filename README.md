@@ -94,8 +94,6 @@ class WeverseClient(SunverseClient):
             # remake which happened somewhere in July or August)
             print(moment.photo)
 
-
-# returns 'geese'
 if __name__ == "__main__":
     client = WeverseClient(
         email="the email of the account you want to sign in with",
