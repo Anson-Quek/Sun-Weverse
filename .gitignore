@@ -4,6 +4,9 @@
 .venv
 .vscode
 .vscode/*
+*.egg-info/
+_build
+dist
 Lib
 Scripts
 tests
