@@ -783,7 +783,8 @@ class SunverseClient:
 
                     elif notification.post_type == PostTypes.NOTICE:
                         notice = await self.fetch_notice(notification.post_id)
-                        await self.on_new_notice(notice)
+                        if notice: # Don't call this method for non-artist notice.
+                            await self.on_new_notice(notice)
 
                 for comment in comments:
                     await self.on_new_comment(comment)
