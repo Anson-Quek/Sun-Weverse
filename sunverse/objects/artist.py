@@ -41,12 +41,13 @@ class Artist:
         The URL of the profile image of the artist.
     profile_banner_url: :class:`str`
         The URL of the profile banner of the artist.
-    profile_comment: :class:`str`
-        The profile comment of the artist.
+    profile_comment: :class:`str` | :class:`None`
+        The profile comment of the artist, if any.
     community_id: :class:`int`
         The community ID of the community the artist belongs to. This
-        can be used to fetch the actual :class:`sunverse.objects.Community`
-        object if needed using the :method:`fetch_community` method.
+        can be used to fetch the actual :class:`sunverse.objects.community.Community`
+        object if needed using the :class:`sunverse.sunverse.SunverseClient.fetch_community()`
+        method.
     """
 
     __slots__ = (
@@ -75,7 +76,7 @@ class Artist:
         self.nickname: str = data["profileName"]
         self.profile_image_url: str = data["profileImageUrl"]
         self.profile_banner_url: str = data["profileCoverImageUrl"]
-        self.profile_comment: str = data["profileComment"]
+        self.profile_comment: str | None = data.get("profileComment")
         self.community_id: int = data["communityId"]
 
     def __eq__(self, other):
