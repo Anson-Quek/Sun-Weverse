@@ -1,7 +1,11 @@
 import asyncio
 import logging
 
-from aiohttp import ClientConnectionError, ClientResponse, ClientSession
+from aiohttp import (
+    ClientConnectionError,
+    ClientResponse,
+    ClientSession,
+)
 from yarl import URL
 
 from sunverse.objects.notification import Notification
@@ -145,9 +149,7 @@ class SunverseClient:
             raise InternalServerError(resp.url)
 
         if resp.status != 200:  # Raises this exception if other HTTP codes encountered.
-            raise RequestFailed(
-                resp.url, resp.status, (await resp.json()).get("message")
-            )
+            raise RequestFailed(resp.url, resp.status, await resp.text("utf-8"))
 
     async def _object_creator(self, object_type: str, data: dict, retry_url: str):
         """Responsible for creating all the Sunverse Objects based on the
@@ -783,7 +785,7 @@ class SunverseClient:
 
                     elif notification.post_type == PostTypes.NOTICE:
                         notice = await self.fetch_notice(notification.post_id)
-                        if notice: # Don't call this method for non-artist notice.
+                        if notice:  # Don't call this method for non-artist notice.
                             await self.on_new_notice(notice)
 
                 for comment in comments:
